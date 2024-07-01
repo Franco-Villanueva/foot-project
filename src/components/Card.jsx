@@ -1,8 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity  } from "react-native";
 import theme from "../themes/theme";
 import StyledText from "./StyledText";
 import { FontAwesome, MaterialIcons } from 'react-native-vector-icons';
+import { useNavigate } from "react-router-native";
+ 
 
 const styles = StyleSheet.create({
     image: {
@@ -14,46 +16,58 @@ const styles = StyleSheet.create({
     card:{
         width: 130,
         height: 240,
-        backgroundColor: theme.colors.tertiary,
+        backgroundColor: theme.colors.white,
         margin: 5,
         borderRadius: 20,
         shadowColor: "black", 
-        shadowOffset: { width: 10, height: 10 },
-        shadowOpacity: 0.8,
-        shadowRadius: 6, 
-        elevation: 15,
+        shadowOffset: { width: 5, height: 5 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5, 
+        elevation: 8,
     },
     description:{
         flex:1,
         justifyContent: 'space-between',
-        padding: 5,
+        padding: 10,
     }
 })
 
+const reducerName = (name)=>{
+    if(name.length > 25){
+        const newName = name.slice(0,30)+ '...'
+        return newName
+    }
+    return name
+}
 
 
-const Card = ({image,title,readyInMinutes,aggregateLikes}) => {
-
+const Card = ({id,image,title,readyInMinutes,aggregateLikes}) => {
+    const navigate = useNavigate()
 
     return ( 
-        <View style={styles.card}>
+        <TouchableOpacity onPress={() => navigate(`/detail/${id}`)}>
 
-            <View >
-                <Image style={styles.image} source={{uri: image}} />
-            </View>
-            
-            <View style={styles.description}>
-                <StyledText fontSize={'body'} fontWeight={'bold'} color={'blackw'}>{title}</StyledText>
-
-                <View style={{flexDirection:'row', justifyContent:'space-between', backgroundColor:'red'}}>
+            <View style={styles.card}>
                 
-                <StyledText ><FontAwesome name="heart" size={15} color={'black'} style={styles.icon} /> {aggregateLikes}</StyledText>
-                <StyledText ><MaterialIcons name="timer" size={10} color={'black'} style={styles.icon} />{readyInMinutes}</StyledText>
+                <View >
+                    <Image style={styles.image} source={{uri: image}} />
+                </View>
+                
+                <View style={styles.description}>
+                    
+                    <StyledText fontSize={'body'} fontWeight={'bold'} color={'blackw'}>{reducerName(title)}</StyledText>
+                    
+                    <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                    
+                    <StyledText ><FontAwesome name="heart" size={15} color={'grey'} style={styles.icon} /> {aggregateLikes}</StyledText>
+                    <StyledText ><MaterialIcons name="timer" size={15} color={'grey'} style={styles.icon} />{readyInMinutes}</StyledText>
+                    </View>
+                    
                 </View>
                 
             </View>
             
-        </View>
+        </TouchableOpacity>
      );
 }
  
