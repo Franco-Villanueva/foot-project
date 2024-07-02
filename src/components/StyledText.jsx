@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     colorWhite: {
         color: theme.colors.white,
     },
+    colorGrey: {
+        color: theme.colors.grey
+    },
     fontWeightBold: {
         fontWeight: theme.fontWeights.bold,
     },
@@ -65,8 +68,9 @@ const StyledText = ({
         color === "secondary" && styles.colorSecondary,
         color === "tertiary" && styles.colorTertiary,
         color === "quaternary" && styles.colorQuaternary,
-        color === "blackw" && styles.colorBlack,
-        color === "white" && styles.colorWhite,
+        color === "b" && styles.colorBlack,
+        color === "w" && styles.colorWhite,
+        color === "g" && styles.colorGrey,
         fontWeight === "bold" && styles.fontWeightBold,
         align === "center" && styles.textAlignCenter,
         align === "left" && styles.textAlignLeft,

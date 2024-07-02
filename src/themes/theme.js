@@ -4,7 +4,8 @@ const colors = {
     tertiary: '#E7D37F',
     quaternary: '#FD9B63',
     white: '#fff',
-    black: '#333333'
+    black: '#333333',
+    grey: '#757575'
 };
 
 const fontSizes = {

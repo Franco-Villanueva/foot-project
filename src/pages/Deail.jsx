@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-native";
 import Constants from "expo-constants";
 import theme from "../themes/theme";
 import StyledText from "../components/StyledText";
+import FoodStats from "../components/FoodStats";
 
 const Detail = () => {
     const { id } = useParams();
@@ -54,8 +55,9 @@ const Detail = () => {
             { food === null
                 ? <StyledText fontSize={'title'} fontWeight={'bold'} color={'primary'}>CARGANDO...</StyledText>
                 : (
-                    <>
+                    <>  
                         <Image style={styles.image} source={{ uri: food.image }} />
+                        
                         <TouchableOpacity style={styles.button} onPress={() => navigate(-1)}>
                             <StyledText color={'white'} fontWeight={'bold'} fontSize={'subheading'}>&lt;</StyledText>
                         </TouchableOpacity>
@@ -63,9 +65,12 @@ const Detail = () => {
                         <View style={styles.title}>
                             <StyledText color={'primary'} fontSize={'title'} fontWeight={'bold'}>{food.title}</StyledText>
                         </View>
-                    <ScrollView >
-                        <StyledText style={styles.description}>{cleanSummary(food.summary)}</StyledText>
-                    </ScrollView></>
+
+                        <ScrollView >
+                            <FoodStats {...food} />
+                            <StyledText color={'g'} fontWeight={'bold'} style={styles.description}>{cleanSummary(food.summary)}</StyledText>
+                        </ScrollView>
+                    </>
                 )
             }
         </Animated.View>
@@ -80,16 +85,9 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'flex-start',
     },
-    scroll: {
-        backgroundColor: 'red',
-        padding: 10,
-        flex: 1
-    },
     image: {
         width: '100%',
         height: '40%',
-        borderBottomLeftRadius: 30,
-        backgroundColor: 'red'
     },
     button: {
         width: 50,

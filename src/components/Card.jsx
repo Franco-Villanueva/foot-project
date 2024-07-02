@@ -59,8 +59,8 @@ const Card = ({id,image,title,readyInMinutes,aggregateLikes}) => {
                     
                     <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                     
-                    <StyledText ><FontAwesome name="heart" size={15} color={'grey'} style={styles.icon} /> {aggregateLikes}</StyledText>
-                    <StyledText ><MaterialIcons name="timer" size={15} color={'grey'} style={styles.icon} />{readyInMinutes}</StyledText>
+                    <StyledText ><FontAwesome name="heart" size={15} color={'#757575'} style={styles.icon} /> {aggregateLikes}</StyledText>
+                    <StyledText ><MaterialIcons name="timer" size={15} color={'#757575'} style={styles.icon} />{readyInMinutes}</StyledText>
                     </View>
                     
                 </View>
