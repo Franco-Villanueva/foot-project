@@ -9,7 +9,7 @@ const Cards = () => {
 
     const fetchRepositories = async()=>{
         try {
-            const response = await globalThis.fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=4f9f2373ba1641b3a6f86cdb4ec2fe5e&addRecipeInformation=true');
+            const response = await globalThis.fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=f1ec54e91903468db2c10a613d5322c2&addRecipeInformation=true');
             const json = await response.json();
             setRecetes(json.results);
         } catch (error) {

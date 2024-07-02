@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import Stat from "./Stat";
 
 
@@ -13,17 +13,13 @@ const FoodStats = ({aggregateLikes,readyInMinutes,servings}) => {
 
 
     return ( 
-            <>
-                <FlatList
-                data={stats}
-                ItemSeparatorComponent={() => <Text>  </Text>}
-                renderItem={({item: stat}) => (
-                        <Stat name={stat.name} value={stat.value} />
-                )}>
-                
-                </FlatList>
-                    
-            </>
+        <>
+        {stats.map((stat, index) => (
+            <View key={index} >
+                <Stat name={stat.name} value={stat.value} />
+            </View>
+        ))}
+        </>
      );
 }
  

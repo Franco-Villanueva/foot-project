@@ -17,7 +17,7 @@ const Detail = () => {
     useEffect(() => {
         const fetchFood = async () => {
             try {
-                const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=4f9f2373ba1641b3a6f86cdb4ec2fe5e`);
+                const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=f1ec54e91903468db2c10a613d5322c2`);
                 const json = await response.json();
                 setFood(json);
                 startAnimation();
@@ -29,65 +29,63 @@ const Detail = () => {
         fetchFood();
 
         return () => {};
-    }, [id]); 
+    }, [id]);
 
     // Función para iniciar la animación al entrar en la pantalla
     const startAnimation = () => {
         Animated.timing(animation, {
             toValue: 1,
             duration: 500,
-            useNativeDriver: true, 
+            useNativeDriver: true,
         }).start();
     };
 
     const cleanSummary = (summary) => {
         return summary
-          .replace(/<\/?[^>]+(>|$)/g, "")  // Elimina todas las etiquetas HTML
-          .replace(/&nbsp;/g, ' ')         // Reemplaza &nbsp; por un espacio
-          .replace(/&lt;/g, '<')           // Reemplaza &lt; por <
-          .replace(/&gt;/g, '>')           // Reemplaza &gt; por >
-          .replace(/&amp;/g, '&');         // Reemplaza &amp; por &
-      };
-      
+            .replace(/<\/?[^>]+(>|$)/g, "")  // Elimina todas las etiquetas HTML
+            .replace(/&nbsp;/g, ' ')         // Reemplaza &nbsp; por un espacio
+            .replace(/&lt;/g, '<')           // Reemplaza &lt; por <
+            .replace(/&gt;/g, '>')           // Reemplaza &gt; por >
+            .replace(/&amp;/g, '&');         // Reemplaza &amp; por &
+    };
 
-    return ( 
-        <Animated.View style={[styles.container, { opacity: animation }]}>
-            { food === null
-                ? <StyledText fontSize={'title'} fontWeight={'bold'} color={'primary'}>CARGANDO...</StyledText>
-                : (
-                    <>  
-                        <Image style={styles.image} source={{ uri: food.image }} />
-                        
-                        <TouchableOpacity style={styles.button} onPress={() => navigate(-1)}>
-                            <StyledText color={'white'} fontWeight={'bold'} fontSize={'subheading'}>&lt;</StyledText>
-                        </TouchableOpacity>
-                        
-                        <View style={styles.title}>
-                            <StyledText color={'primary'} fontSize={'title'} fontWeight={'bold'}>{food.title}</StyledText>
-                        </View>
+    return (
+        <View style={styles.container}>
+            <Animated.View style={{ opacity: animation, flex: 1 }}>
+                {food === null
+                    ? <StyledText fontSize={'title'} fontWeight={'bold'} color={'primary'}>CARGANDO...</StyledText>
+                    : (
+                        <ScrollView>
+                            <Image style={styles.image} source={{ uri: food.image }} />
 
-                        <ScrollView >
-                            <FoodStats {...food} />
-                            <StyledText color={'g'} fontWeight={'bold'} style={styles.description}>{cleanSummary(food.summary)}</StyledText>
+                            <View style={styles.title}>
+                                <StyledText color={'primary'} fontSize={'title'} fontWeight={'bold'}>{food.title}</StyledText>
+                            </View>
+
+                            <View>
+                                <FoodStats {...food} />
+                                <StyledText color={'g'} fontWeight={'bold'} style={styles.description}>{cleanSummary(food.summary)}</StyledText>
+                            </View>
                         </ScrollView>
-                    </>
-                )
-            }
-        </Animated.View>
+                    )
+                }
+            </Animated.View>
+            <TouchableOpacity style={styles.button} onPress={() => navigate(-1)}>
+                <StyledText color={'w'} fontWeight={'bold'} fontSize={'subheading'}>&lt;</StyledText>
+            </TouchableOpacity>
+        </View>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {
         flex: 1, // Alineación al inicio
         backgroundColor: theme.colors.white,
         position: 'relative',
-        justifyContent: 'flex-start',
     },
     image: {
         width: '100%',
-        height: '40%',
+        height: 300, // Puedes ajustar la altura según sea necesario
     },
     button: {
         width: 50,

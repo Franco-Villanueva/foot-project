@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import StyledText from "./StyledText";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -34,8 +34,21 @@ const Stat = ({ name, value }) => {
     };
 
     return (
-        <View style={{ 
-            flex: 1,
+        <View style={styles.container}>
+            <View style={styles.positiones}>
+                {renderIcon()}
+                <View style={{ marginLeft: 15 }}>
+                    <StyledText fontSize={'subheading'}>{renderLabel()}</StyledText>
+                    <StyledText>{value}</StyledText>
+                </View>
+            </View>
+        </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
             margin: 5,
             borderRadius: 20,
             shadowColor: "#989898", 
@@ -45,16 +58,11 @@ const Stat = ({ name, value }) => {
             elevation: 3,
             backgroundColor: 'white',
             padding: 10
-        }}>
-            <View style={{ flexDirection: "row", alignItems: 'center' }}>
-                {renderIcon()}
-                <View style={{ marginLeft: 8 }}>
-                    <Text>{renderLabel()}</Text>
-                    <StyledText>{value}</StyledText>
-                </View>
-            </View>
-        </View>
-    );
-};
+    },
+    positiones: {
+        flexDirection: "row",
+        alignItems: 'center'
+    }
+})
 
 export default Stat;
