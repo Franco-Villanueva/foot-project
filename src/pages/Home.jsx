@@ -4,7 +4,6 @@ import StyledText from "../components/StyledText";
 import Cards from "../components/Cards";
 import theme from "../themes/theme";
 import Constants from "expo-constants";
-import Navigator from '../components/Navigator'
 
 const styles = StyleSheet.create({
     container: {
