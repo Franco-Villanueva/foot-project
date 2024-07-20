@@ -45,7 +45,9 @@ const Card = ({id,image,title,readyInMinutes,aggregateLikes}) => {
     const navigate = useNavigate()
 
     return ( 
-        <TouchableOpacity onPress={() => navigate(`/detail/${id}`)}>
+        <TouchableOpacity onPress={() => {
+            navigate(`/detail/${id}`)
+            console.log(id)}}>
 
             <View style={styles.card}>
                 

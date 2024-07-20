@@ -15,6 +15,7 @@ const Detail = () => {
     const [animation] = useState(new Animated.Value(0)); // Estado para la animación de entrada
 
     useEffect(() => {
+        console.log('holaaaa')
         const fetchFood = async () => {
             try {
                 const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=f1ec54e91903468db2c10a613d5322c2`);
