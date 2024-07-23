@@ -11,7 +11,7 @@ function MyTabs() {
     return (
         <Tab.Navigator screenOptions={{ headerShown: false }}>
             <Tab.Screen path='/' name="Home" component={Home} />
-            <Tab.Screen name="Settings" component={Setting} />
+            {/* <Tab.Screen name="Settings" component={Setting} /> */}
         </Tab.Navigator>
     )
 }
