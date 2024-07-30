@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import Setting from '../pages/Setting'
+import Setting from '../pages/Setting';
 import Main from "./Main";
 import Home from "../pages/Home";
 
@@ -21,6 +21,7 @@ function MyTabs() {
 export default function Navigation() {
     return(
         <NavigationContainer>
+            
             <MyTabs />
         </NavigationContainer>
     )
