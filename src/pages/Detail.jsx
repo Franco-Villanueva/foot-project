@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, StyleSheet, TouchableOpacity, Animated, ScrollView } from "react-native";
 import { useParams } from "react-router-native";
-import { useNavigate } from "react-router-native";
+import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import theme from "../themes/theme";
 import StyledText from "../components/StyledText";
 import FoodStats from "../components/FoodStats";
 
-const Detail = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
+const Detail = ({ route }) => {
+    const { id } = route.params; // Obtén el id desde los params
+    const navigation = useNavigation();
 
     const [food, setFood] = useState(null);
-    const [animation] = useState(new Animated.Value(0)); // Estado para la animación de entrada
+    const [animation] = useState(new Animated.Value(0));
 
     useEffect(() => {
-        console.log('holaaaa')
         const fetchFood = async () => {
             try {
                 const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=f1ec54e91903468db2c10a613d5322c2`);
@@ -28,8 +27,6 @@ const Detail = () => {
         };
 
         fetchFood();
-
-        return () => {};
     }, [id]);
 
     // Función para iniciar la animación al entrar en la pantalla
@@ -71,7 +68,7 @@ const Detail = () => {
                     )
                 }
             </Animated.View>
-            <TouchableOpacity style={styles.button} onPress={() => navigate(-1)}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
                 <StyledText color={'w'} fontWeight={'bold'} fontSize={'subheading'}>&lt;</StyledText>
             </TouchableOpacity>
         </View>

@@ -19,14 +19,14 @@ const styles = StyleSheet.create({
   });
   
 
-const Setting = () => {
+const Favorites = () => {
     return ( 
  
         <View style={styles.container}>
-            <StyledText style={styles.logo} fontSize={'title'} fontWeight={'bold'} color={'primary'}  >Setting</StyledText>
+            <StyledText style={styles.logo} fontSize={'title'} fontWeight={'bold'} color={'primary'}  >Favorite foods</StyledText>
         </View>
 
      );
 }
  
-export default Setting;
+export default Favorites;
