@@ -52,7 +52,7 @@ function MyTabs() {
             tabBarActiveTintColor: '#365E32',
             tabBarStyle: {
                 backgroundColor: '#FFFFFF',
-                height: 80,
+                height: 85,
                 paddingBottom: 10,
                 paddingTop: 10,
                 borderRadius: 60
