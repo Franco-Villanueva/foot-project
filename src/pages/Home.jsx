@@ -4,6 +4,7 @@ import StyledText from "../components/StyledText";
 import Cards from "../components/Cards";
 import theme from "../themes/theme";
 import Constants from "expo-constants";
+import Categories from "../components/Categories";
 
 const styles = StyleSheet.create({
     container: {
@@ -23,7 +24,8 @@ const Home = () => {
     return ( 
  
         <View style={styles.container}>
-            <StyledText style={styles.logo} fontSize={'title'} fontWeight={'bold'} color={'primary'}  >Food's</StyledText>
+            <StyledText style={styles.logo} fontSize={'title'} fontWeight={'bold'} color={'primary'} >Food's</StyledText>
+            <Categories />
             <Cards />
         </View>
 
