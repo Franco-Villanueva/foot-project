@@ -10,6 +10,7 @@ import Detail from "../pages/Detail";
 
 import { FontAwesome } from 'react-native-vector-icons';
 import Favorites from "../pages/Favorites";
+import Category from "./Category";
 
 
 
@@ -36,9 +37,13 @@ function HomeStack() {
             component={Detail}
             options={{
                 headerShown: false,
-                
-                
+
             }}
+            />
+            <HomeStackNavigator.Screen
+            name="Category"
+            component={Category}
+            
             />
         </HomeStackNavigator.Navigator>
     )

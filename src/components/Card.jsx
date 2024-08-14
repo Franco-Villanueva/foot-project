@@ -40,7 +40,7 @@ const reducerName = (name) => {
 };
 
 const Card = ({ id, image, title, readyInMinutes, aggregateLikes }) => {
-    const navigation = useNavigation(); // Usa useNavigation de react-navigation
+    const navigation = useNavigation(); 
 
     return (
         <TouchableOpacity onPress={() => navigation.navigate("Detail", { id })}>
